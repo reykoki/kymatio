@@ -1,5 +1,5 @@
 
-def scattering1d(U_0, backend, filters, log2_stride, ind_start, ind_end, average_local):
+def scattering1d(U_0, backend, filters, log2_stride, average_local):
     """
     Main function implementing the 1-D scattering transform.
 

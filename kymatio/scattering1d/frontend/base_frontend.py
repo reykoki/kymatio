@@ -114,7 +114,7 @@ class ScatteringBase1D(ScatteringBase):
 
         filters = [self.phi_f, self.psi1_f, self.psi2_f][:(1+self.max_order)]
         S_gen = scattering1d(U_0, self.backend, filters,
-            self.log2_stride, self.ind_start, self.ind_end, (self.average=='local'))
+            self.log2_stride, (self.average=='local'))
 
         S_gen = self.backend.unpad(S_gen, self.ind_start[0], self.ind_end[0])
 
@@ -189,7 +189,7 @@ class ScatteringBase1D(ScatteringBase):
         filters = [self.phi_f, self.psi1_f, self.psi2_f][:(1+self.max_order)]
         print('IN META')
         S_gen = scattering1d(
-            None, backend, filters, self.log2_stride, self.ind_start, self.ind_end, average_local=False)
+            None, backend, filters, self.log2_stride, average_local=False)
         x = input('ugh')
         S = sorted(list(S_gen), key=lambda path: (len(path['n']), path['n']))
         meta = dict(order=np.array([len(path['n']) for path in S]))
